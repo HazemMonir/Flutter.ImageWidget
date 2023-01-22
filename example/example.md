@@ -1,7 +1,7 @@
 ## Import package
 
 ```dart
-import 'package:image_widget/image_widget.dart';
+import 'package:image_x/image_x.dart';
 ```
 
 ## Usage: 
