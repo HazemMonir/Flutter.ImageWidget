@@ -9,24 +9,40 @@ class ImageX extends StatelessWidget {
   /// required path to image
   final String path;
 
-  /// BoxFit with default value of [BoxFit.contain]
+  /// optional height
+  final double? height;
+
+  /// optional width
+  final double? width;
+
+  /// optional decoration [BoxDecoration]
+  final BoxDecoration? decoration;
+
+  /// optional clipBehavior with default value = [Clip.hardEdge]
+  final Clip clipBehavior;
+
+  /// optional fit with default value = [BoxFit.contain]
   final BoxFit? fit;
 
-  /// Optional loading widget
-  final Widget? loadWidget;
+  /// optional loading widget
+  final Widget? loadingWidget;
 
   /// fallback error widget with default value of x icon
-  final Widget? loadingErrorWidget;
+  final Widget? errorWidget;
 
-  /// In case of [SVG] you can optionally set color
+  /// in case of [SVG] you can optionally set color
   final Color? svgColor;
 
   const ImageX({
     super.key,
     required this.path,
+    this.height,
+    this.width,
+    this.decoration,
+    this.clipBehavior = Clip.hardEdge,
     this.fit = BoxFit.contain,
-    this.loadWidget,
-    this.loadingErrorWidget,
+    this.loadingWidget,
+    this.errorWidget,
     this.svgColor,
   });
 
@@ -39,12 +55,15 @@ class ImageX extends StatelessWidget {
   /// check if path contains .svg
   bool _isSVG(String path) => path.contains('.svg');
 
+  /// widget for errorBuilder
   Widget _errorWidgetBuilder(_, __, ___) =>
-      loadingErrorWidget ?? const Icon(Icons.close_rounded, size: 50);
+      errorWidget ?? const Icon(Icons.close_rounded, size: 50);
 
-  Widget loadingWidgetBuilder(_, __, ___) => loadWidget!;
+  /// widget for loadingBuilder
+  Widget loadingWidgetBuilder(_, __, ___) => loadingWidget!;
 
-  _networkImage() => _isSVG(path)
+  /// returns network image widget
+  Widget _networkImage() => _isSVG(path)
       ? SvgPicture.network(path, color: svgColor)
       : Image.network(
           path,
@@ -53,7 +72,8 @@ class ImageX extends StatelessWidget {
           loadingBuilder: loadingWidgetBuilder,
         );
 
-  _fileImage() => _isSVG(path)
+  /// returns file image widget
+  Widget _fileImage() => _isSVG(path)
       ? SvgPicture.file(File(path), color: svgColor)
       : Image.file(
           File(path),
@@ -61,7 +81,8 @@ class ImageX extends StatelessWidget {
           errorBuilder: _errorWidgetBuilder,
         );
 
-  _assetImage() => _isSVG(path)
+  /// returns asset file image widget
+  Widget _assetImage() => _isSVG(path)
       ? SvgPicture.asset(path, color: svgColor)
       : Image.asset(
           path,
@@ -69,12 +90,21 @@ class ImageX extends StatelessWidget {
           errorBuilder: _errorWidgetBuilder,
         );
 
+  /// returns the proper image widget
+  Widget _child() => _isUrl(path)
+      ? _networkImage()
+      : _isAsset(path)
+          ? _assetImage()
+          : _fileImage();
+
   @override
   Widget build(BuildContext context) {
-    return _isUrl(path)
-        ? _networkImage()
-        : _isAsset(path)
-            ? _assetImage()
-            : _fileImage();
+    return Container(
+      height: height,
+      width: width,
+      clipBehavior: clipBehavior,
+      decoration: decoration,
+      child: _child(),
+    );
   }
 }

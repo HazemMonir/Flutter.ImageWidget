@@ -1,8 +1,24 @@
-## Features
+## ImageX
 
 Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all image types including SVG.
 
-## Usage: 
+#### => Returns a statless widget
+<br>
+
+#### Takes these named paramters:
+- ```String path``` required path to image. It could be [Asset, Path, or Url]
+- ```double? height``` optional height.
+- ```double? width``` optional width.
+- ```BoxDecoration? decoration``` optional decoration.
+- ```Clip clipBehavior``` optional clipBehavior with default value = Clip.hardEdge
+- ```BoxFit? fit``` optional fit with default value = BoxFit.contain
+- ```Widget? loadingWidget``` optional loading widget.
+- ```Widget? errorWidget``` fallback error widget with default value of x icon
+- ```Color? svgColor``` in case of [SVG] you can optionally set color
+
+<br><br>
+
+## Example: 
 
 ```dart
 class MyLogo extends StatelessWidget {
