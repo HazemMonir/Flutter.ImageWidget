@@ -1,4 +1,4 @@
-library image_widget;
+library image_x;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +14,7 @@ bool isAsset(String path) => path.startsWith('assets/');
 bool isSVG(String path) => path.contains('.svg');
 
 /// Lazy image widget for any path [Asset, Path, Url] for all image types
-class ImageWidget extends StatelessWidget {
+class ImageX extends StatelessWidget {
   /// required path to image
   final String path;
 
@@ -30,7 +30,7 @@ class ImageWidget extends StatelessWidget {
   /// In case of [SVG] you can optionally set color
   final Color? svgColor;
 
-  const ImageWidget({
+  const ImageX({
     super.key,
     required this.path,
     this.fit = BoxFit.contain,

@@ -10,7 +10,7 @@ class MyLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ImageWidget(
+    return const ImageX(
       path: 'assets/images/logo.svg',
       fit: BoxFit.fitWidth,
       svgColor: Colors.blue,
