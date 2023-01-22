@@ -1,6 +1,8 @@
-## Features
+## Import package
 
-Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all image types including SVG.
+```dart
+import 'package:image_widget/image_widget.dart';
+```
 
 ## Usage: 
 
