@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * Added height, width, decoration, clipBehavior parameters
+
+## 0.0.3
+
+* RemovedclipBehavior parameter

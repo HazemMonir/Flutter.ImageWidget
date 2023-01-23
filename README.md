@@ -2,8 +2,7 @@
 
 Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all image types including SVG.
 
-#### => Returns a StatelessWidget
-<br>
+<br><br>
 
 #### Takes these named paramters:
 - ```String path``` required path to image. It could be [Asset, Path, or Url]
