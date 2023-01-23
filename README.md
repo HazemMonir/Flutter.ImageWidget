@@ -2,7 +2,7 @@
 
 Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all image types including SVG.
 
-#### => Returns a statless widget
+#### => Returns a StatelessWidget
 <br>
 
 #### Takes these named paramters:
@@ -10,7 +10,6 @@ Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all
 - ```double? height``` optional height.
 - ```double? width``` optional width.
 - ```BoxDecoration? decoration``` optional decoration.
-- ```Clip clipBehavior``` optional clipBehavior with default value = Clip.hardEdge
 - ```BoxFit? fit``` optional fit with default value = BoxFit.contain
 - ```Widget? loadingWidget``` optional loading widget.
 - ```Widget? errorWidget``` fallback error widget with default value of x icon

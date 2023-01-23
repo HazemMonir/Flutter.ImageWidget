@@ -18,9 +18,6 @@ class ImageX extends StatelessWidget {
   /// optional decoration [BoxDecoration]
   final BoxDecoration? decoration;
 
-  /// optional clipBehavior with default value = [Clip.hardEdge]
-  final Clip clipBehavior;
-
   /// optional fit with default value = [BoxFit.contain]
   final BoxFit? fit;
 
@@ -39,7 +36,6 @@ class ImageX extends StatelessWidget {
     this.height,
     this.width,
     this.decoration,
-    this.clipBehavior = Clip.hardEdge,
     this.fit = BoxFit.contain,
     this.loadingWidget,
     this.errorWidget,
@@ -102,7 +98,6 @@ class ImageX extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      clipBehavior: clipBehavior,
       decoration: decoration,
       child: _child(),
     );
