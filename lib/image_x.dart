@@ -51,13 +51,13 @@ class ImageX extends StatelessWidget {
   });
 
   /// check if string is url
-  bool _isUrl(String url) => Uri.parse(url).host.isNotEmpty;
+  bool _isUrl() => Uri.parse(path).host.isNotEmpty;
 
   /// check if path starts with assets/
-  bool _isAsset(String path) => path.startsWith('assets/');
+  bool _isAsset() => path.startsWith('assets/');
 
   /// check if path contains .svg
-  bool _isSVG(String path) => path.contains('.svg');
+  bool _isSVG() => path.contains('.svg');
 
   /// widget for errorBuilder
   Widget _errorWidgetBuilder(_, __, ___) =>
@@ -67,12 +67,13 @@ class ImageX extends StatelessWidget {
   Widget loadingWidgetBuilder(_, __, ___) => loadingWidget!;
 
   /// returns network image widget
-  Widget _networkImage() => _isSVG(path)
+  Widget _networkImage() => _isSVG()
       ? SvgPicture.network(
           path,
           color: svgColor,
           height: height,
           width: width,
+          fit: fit,
         )
       : Image.network(
           path,
@@ -84,12 +85,13 @@ class ImageX extends StatelessWidget {
         );
 
   /// returns file image widget
-  Widget _fileImage() => _isSVG(path)
+  Widget _fileImage() => _isSVG()
       ? SvgPicture.file(
           File(path),
           color: svgColor,
           height: height,
           width: width,
+          fit: fit,
         )
       : Image.file(
           File(path),
@@ -100,12 +102,13 @@ class ImageX extends StatelessWidget {
         );
 
   /// returns asset file image widget
-  Widget _assetImage() => _isSVG(path)
+  Widget _assetImage() => _isSVG()
       ? SvgPicture.asset(
           path,
           color: svgColor,
           height: height,
           width: width,
+          fit: fit,
         )
       : Image.asset(
           path,
@@ -116,9 +119,9 @@ class ImageX extends StatelessWidget {
         );
 
   /// returns the proper image widget
-  Widget _child() => _isUrl(path)
+  Widget _child() => _isUrl()
       ? _networkImage()
-      : _isAsset(path)
+      : _isAsset()
           ? _assetImage()
           : _fileImage();
 
