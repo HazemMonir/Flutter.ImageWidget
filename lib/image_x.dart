@@ -15,11 +15,14 @@ class ImageX extends StatelessWidget {
   /// optional width
   final double? width;
 
+  /// optional borderRadius
+  final BorderRadius? borderRadius;
+
   /// optional decoration [BoxDecoration]
   final BoxDecoration? decoration;
 
   /// optional fit with default value = [BoxFit.contain]
-  final BoxFit? fit;
+  final BoxFit fit;
 
   /// optional loading widget
   final Widget? loadingWidget;
@@ -30,16 +33,21 @@ class ImageX extends StatelessWidget {
   /// in case of [SVG] you can optionally set color
   final Color? svgColor;
 
+  /// optional onPressed callback
+  final VoidCallback? onPressed;
+
   const ImageX({
     super.key,
     required this.path,
     this.height,
     this.width,
-    this.decoration,
+    this.borderRadius = BorderRadius.zero,
     this.fit = BoxFit.contain,
+    this.decoration,
     this.loadingWidget,
     this.errorWidget,
     this.svgColor,
+    this.onPressed,
   });
 
   /// check if string is url
@@ -60,9 +68,16 @@ class ImageX extends StatelessWidget {
 
   /// returns network image widget
   Widget _networkImage() => _isSVG(path)
-      ? SvgPicture.network(path, color: svgColor)
+      ? SvgPicture.network(
+          path,
+          color: svgColor,
+          height: height,
+          width: width,
+        )
       : Image.network(
           path,
+          height: height,
+          width: width,
           fit: fit,
           errorBuilder: _errorWidgetBuilder,
           loadingBuilder: loadingWidgetBuilder,
@@ -70,18 +85,32 @@ class ImageX extends StatelessWidget {
 
   /// returns file image widget
   Widget _fileImage() => _isSVG(path)
-      ? SvgPicture.file(File(path), color: svgColor)
+      ? SvgPicture.file(
+          File(path),
+          color: svgColor,
+          height: height,
+          width: width,
+        )
       : Image.file(
           File(path),
+          height: height,
+          width: width,
           fit: fit,
           errorBuilder: _errorWidgetBuilder,
         );
 
   /// returns asset file image widget
   Widget _assetImage() => _isSVG(path)
-      ? SvgPicture.asset(path, color: svgColor)
+      ? SvgPicture.asset(
+          path,
+          color: svgColor,
+          height: height,
+          width: width,
+        )
       : Image.asset(
           path,
+          height: height,
+          width: width,
           fit: fit,
           errorBuilder: _errorWidgetBuilder,
         );
@@ -95,11 +124,15 @@ class ImageX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: decoration,
-      child: _child(),
+    return GestureDetector(
+      onTap: onPressed,
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: Container(
+          decoration: decoration,
+          child: _child(),
+        ),
+      ),
     );
   }
 }

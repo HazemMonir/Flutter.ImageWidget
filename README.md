@@ -6,13 +6,15 @@ Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all
 
 #### Takes these named paramters:
 - ```String path``` required path to image. It could be [Asset, Path, or Url]
-- ```double? height``` optional height.
-- ```double? width``` optional width.
+- ```double? height``` optional image height.
+- ```double? width``` optional image width.
+- ```BorderRadius? borderRadius``` optional borderRadius with default value = [BorderRadius.zero]
 - ```BoxDecoration? decoration``` optional decoration.
-- ```BoxFit? fit``` optional fit with default value = BoxFit.contain
+- ```BoxFit? fit``` optional fit with default value = [BoxFit.contain]
 - ```Widget? loadingWidget``` optional loading widget.
 - ```Widget? errorWidget``` fallback error widget with default value of x icon
 - ```Color? svgColor``` in case of [SVG] you can optionally set color
+- ```VoidCallback? onPressed``` optional onPressed callback function.
 
 <br><br>
 

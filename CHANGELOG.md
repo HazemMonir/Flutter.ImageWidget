@@ -9,3 +9,8 @@
 ## 0.0.3
 
 * RemovedclipBehavior parameter
+
+## 0.0.4
+
+* Added borderRadius, onPressed parameters
+

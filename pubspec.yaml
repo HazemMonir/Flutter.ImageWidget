@@ -1,6 +1,6 @@
 name: image_x
 description: Lazy image widget for any path [Asset, Path, Url] for all image types.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/HazemMonir/Flutter.ImageX
 
 environment:
