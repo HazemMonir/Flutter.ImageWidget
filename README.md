@@ -8,6 +8,7 @@ Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all
 - ```String path``` required path to image. It could be [Asset, Path, or Url]
 - ```double? height``` optional image height.
 - ```double? width``` optional image width.
+- ```double? scale``` optional image scale.
 - ```BorderRadius? borderRadius``` optional borderRadius with default value = [BorderRadius.zero]
 - ```BoxDecoration? decoration``` optional decoration.
 - ```BoxFit? fit``` optional fit with default value = [BoxFit.contain]
