@@ -16,7 +16,7 @@ class ImageX extends StatelessWidget {
   final double? width;
 
   /// optional scale
-  final double? scale;
+  final double scale;
 
   /// optional borderRadius
   final BorderRadius? borderRadius;
@@ -44,7 +44,7 @@ class ImageX extends StatelessWidget {
     required this.path,
     this.height,
     this.width,
-    this.scale,
+    this.scale = 1,
     this.borderRadius = BorderRadius.zero,
     this.fit = BoxFit.contain,
     this.decoration,

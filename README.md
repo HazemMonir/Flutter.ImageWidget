@@ -6,8 +6,8 @@ Just a lazy image widget that accepts any path of [Asset, Path, Url] to load all
 
 #### Takes these named paramters:
 - ```String path``` required path to image. It could be [Asset, Path, or Url]
-- ```double? height``` optional image height.
-- ```double? width``` optional image width.
+- ```double? height``` optional widget height.
+- ```double? width``` optional widget width.
 - ```double? scale``` optional image scale.
 - ```BorderRadius? borderRadius``` optional borderRadius with default value = [BorderRadius.zero]
 - ```BoxDecoration? decoration``` optional decoration.
@@ -29,7 +29,13 @@ class MyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ImageX(
       path: 'assets/images/logo.svg',
-      fit: BoxFit.fitWidth,
+      height: 200,
+      width: 200,
+      scale: .66,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        border: Border.all(width: 2, color: Colors.blue),
+      ),
       svgColor: Colors.blue,
     );
   }

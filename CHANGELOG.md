@@ -17,3 +17,7 @@
 ## 0.0.5
 
 * Added scale parameter
+
+## 0.0.6
+
+* Set default scale value to 1
