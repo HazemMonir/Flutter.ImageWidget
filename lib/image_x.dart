@@ -15,7 +15,7 @@ class ImageX extends StatelessWidget {
   /// optional width
   final double? width;
 
-  /// optional scale
+  /// optional scale with default value = 1
   final double scale;
 
   /// optional borderRadius
@@ -74,7 +74,9 @@ class ImageX extends StatelessWidget {
   Widget _networkImage() => _isSVG()
       ? SvgPicture.network(
           path,
-          color: svgColor,
+          colorFilter: svgColor != null
+              ? ColorFilter.mode(svgColor!, BlendMode.srcIn)
+              : null,
           height: height,
           width: width,
           fit: fit,
@@ -92,7 +94,9 @@ class ImageX extends StatelessWidget {
   Widget _fileImage() => _isSVG()
       ? SvgPicture.file(
           File(path),
-          color: svgColor,
+          colorFilter: svgColor != null
+              ? ColorFilter.mode(svgColor!, BlendMode.srcIn)
+              : null,
           height: height,
           width: width,
           fit: fit,
@@ -109,7 +113,9 @@ class ImageX extends StatelessWidget {
   Widget _assetImage() => _isSVG()
       ? SvgPicture.asset(
           path,
-          color: svgColor,
+          colorFilter: svgColor != null
+              ? ColorFilter.mode(svgColor!, BlendMode.srcIn)
+              : null,
           height: height,
           width: width,
           fit: fit,

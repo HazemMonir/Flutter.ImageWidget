@@ -21,3 +21,7 @@
 ## 0.0.6
 
 * Set default scale value to 1
+
+## 0.0.7
+
+* Updaed to flutter_svg: ^2.0.0+1 dependency
